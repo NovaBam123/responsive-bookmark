@@ -16,3 +16,4 @@ document.querySelectorAll('.color-box').forEach(el => {
     selectedColor.value = color; 
   });
 });
+

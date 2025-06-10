@@ -2,8 +2,17 @@ const btnSubmit= document.getElementById('btn-submit'),
 modalEl = document.getElementById('url-submit'),
 colorEl= document.querySelectorAll('.color-box'),
 bookmarkedUser= document.getElementById('bookmarked'),
-bookmarkedContent= document.querySelectorAll('.div-content');
-settingToggle= document.querySelectorAll('.dropdown-toggle');
+bookmarkedContent= document.querySelectorAll('.div-content'),
+settingToggle= document.querySelectorAll('.dropdown-toggle'),
+// Color-picker
+colorChoose= document.getElementById('color-choose'),
+copyBtn= document.getElementById('copy-btn'),
+applyBtn= document.getElementById('apply-btn'), 
+header= document.getElementById('header'),
+//Toast Bootstrap
+toastBs = document.getElementById('liveToast'),
+toastMessage= document.getElementById('toast-message'),
+toastProgress= document.getElementById('toast-progress');
 
 let nameSite= document.getElementById('name-site');
 let urlSite= document.getElementById('url-address');
@@ -17,13 +26,14 @@ const getData= ()=> {
     let dataUrl= urlSite.value.trim();
     let colorUrl= selectedColor.value || 'fff';
     let timeStamp= Date.now();
+    const pickedColor= applyBtn.dataset.color || 'fff';
 
     let patternURL= /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;  
 
     if(nameUrl=== '' || dataUrl=== ''){
-        alert('input tidak boleh kosong..!');
+        showToastBs(pickedColor, 'Data tidak boleh kosong...!')
     }else if(!patternURL.test(dataUrl)){
-        alert('Url site tidak valid..!')
+        showToastBs(pickedColor, 'Url tidak valid..!')
     }else {
         const myData= {
             id: `id-${timeStamp}`,
@@ -37,21 +47,6 @@ const getData= ()=> {
     displayData(data);
     resetModal();
 }
-
-settingToggle.forEach(toggle => {
-	new bootstrap.Dropdown(toggle);
-});
-
-const newToggle = bookmarkedUser.querySelector('.dropdown-toggle:last-of-type');
-if(newToggle) new bootstrap.Dropdown(newToggle);
-
-const resetModal= ()=> {
-	nameSite.value= '';
-	urlSite.value= '';
-	formControls.forEach(input=> removeColorProperty(input, '#fff'));
-	selectedColor.value= '';
-}
-
 
 // const urlModal = document.getElementById('url-submit');
 // urlModal.addEventListener('hidden.bs.modal', () => {
