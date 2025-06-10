@@ -56,7 +56,7 @@ input:-internal-autofill-selected {
   left: 5px; top: 20px;
   border: 1px solid lightgreen;
   background: linear-gradient(90deg, black,  #006994, black);
-  width: 250px;
+  width: 280px;
   transition: all .3s cubic-bezier(0.6, -0.28, 0.735, 0.045) !important;
   animation: show_msg 0.5s ease forwards;
 }
@@ -66,11 +66,13 @@ input:-internal-autofill-selected {
   display: block !important;
   border: 1px solid lightgreen;
   background: linear-gradient(90deg, black,  #006994, black);
-  width: 250px;
+  width: 280px;
   transition: all .3s cubic-bezier(0.6, -0.28, 0.735, 0.045) !important;
   animation: remove_show 0.3s ease forwards;
 }
-
+#toast-icon{
+  font-size: 22px !important;
+}
 
 .tutup{
   display: flex;
@@ -81,6 +83,7 @@ input:-internal-autofill-selected {
   margin-right: -10px;
   margin-top: 5px;
 }
+
 @keyframes progress {
   100%{
     width: 0%

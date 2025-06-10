@@ -7,9 +7,12 @@ const newToggle = bookmarkedUser.querySelector('.dropdown-toggle:last-of-type');
 if(newToggle) new bootstrap.Dropdown(newToggle);
 
 const resetModal= ()=> {
+	formControls.forEach(input=> removeColorProperty(input, '#fff'));
+    modalTitle.textContent= 'Add New URL';
+    modalTitle.classList.add('fs-5');
+    btnSubmit.textContent= 'Submit';
 	nameSite.value= '';
 	urlSite.value= '';
-	formControls.forEach(input=> removeColorProperty(input, '#fff'));
 	selectedColor.value= '';
 }
 
@@ -20,7 +23,6 @@ copyBtn.addEventListener('click', ()=> {
         applyBtn.dataset.color= pickedColor;
         showToastBs(pickedColor, 'Copied color..!');
         }).catch(err=> console.log('Failed to Copy', err));
-    console.log(pickedColor);
 })
 
 applyBtn.addEventListener('click', ()=> {
@@ -30,12 +32,13 @@ applyBtn.addEventListener('click', ()=> {
     showToastBs(pickedColor, 'Applying color to navbar!');
 })
 
-const showToastBs= (picked, message)=> {
+const showToastBs= (picked, message, iconClass= 'bi bi-check-circle text-info fs-6 me-2')=> {
     // Reset animasi
     toastProgress.style.animation = 'none';
     toastProgress.offsetHeight; // reflow
     toastProgress.style.animation = null;
 
+    toastIcon.className= iconClass;
     toastMessage.innerText= message;
     toastBs.classList.add('show');
     toastBs.style.background= `linear-gradient(90deg, black, ${picked}, black)`;
@@ -46,3 +49,5 @@ const showToastBs= (picked, message)=> {
     })
     toastBootstrap.show();
 }
+
+//threshold bootstrap warna text untuk latar belakang gelap atau terang:

@@ -30,6 +30,7 @@
     <script src="js/render.js" defer></script>
     <script src="js/bootstrap.js" defer></script>
     <script src="js/colorHandler.js" defer></script>
+    <script src="js/util.js" defer></script>
 </head>
 <body>
 <!-- Navbar -->
@@ -114,7 +115,7 @@
                 <button 
                     class="btn btn-sm btn-info px-2 m-0 p-0 tombol-submit" title="Add Site"
                     data-bs-toggle="modal"
-                    data-bs-target="#url-submit"
+                    data-bs-target="#bs-modal"
                     ">
                     <i class="bi bi-journal-bookmark-fill fs-4 text-light"></i>
                 </button>
@@ -136,11 +137,11 @@
 </div> 
 
 <!-- Modal -->
-<div class="modal fade" id="url-submit" tabindex="-1" aria-labelledby="exampleModalLabel">
+<div class="modal fade" id="bs-modal" tabindex="-1" aria-labelledby="modalLabel">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-altblue text-white" id="modal-title">
-                <h1 class="modal-title fs-5 ms-3" id="exampleModalLabel">
+                <h1 class="modal-title fs-5 ms-3" id="modalLabel">
                     Add New URL
                 </h1>
                 <button type="button" class="btn-close bg-light text-light" data-bs-dismiss="modal"></button>
@@ -200,7 +201,7 @@
                     </div>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button id="btn-cancel" type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
                     <button id="btn-submit" type="button" class="btn btn-altblue" data-bs-dismiss="modal">Submit</button>
                 </div>
 
@@ -224,7 +225,7 @@
                 <div class="toast-progress" id="toast-progress"></div>
                 <div class="toast-body d-flex align-items-center justify-content-between gap-2 border custom">
                     <div class="d-flex justify-content-between align-items-center">
-                        <i id="toast-icon" class="bi bi-exclamation-triangle-fill text-info fs-5 me-2"></i>
+                        <i id="toast-icon" class="bi bi-check-circle text-info fs-5 me-2"></i>
                         <p id="toast-message" class="fs-6 fw-semibold me-2 mb-0">Color Copied</p>
                     </div>
                     <button 
