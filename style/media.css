@@ -1,0 +1,66 @@
+/* breakpoint xs */
+@media(max-width: 450px){
+    .container.bookmarked{
+        max-width: 380px;
+    }
+    .div-content{
+        padding: 5px 5px;
+        min-width: 350px;
+        justify-content: center;
+    }
+    .btn.custom{
+        max-width: 30px;
+        height: 30px; 
+    }
+}
+/* breakpoint sm */
+@media(min-width: 576px){
+   .btn.custom{
+        width: 30px;
+        height: 30px;
+    }
+    .container.bookmarked{
+        min-width: 600px;
+    }
+    .div-content{
+        width: 280px
+    }
+    
+}
+
+/* breakpoint md */
+@media(min-width: 768px){
+    .container.bookmarked{
+        min-width: 790px;
+    }
+    .div-content{
+        width: 250px;
+    }
+}
+/* breakpoint lg */
+@media(min-width: 992px){
+    .container.bookmarked{
+        min-width: 880px;
+    }
+    .div-content{
+        width: 220px;
+    }
+}
+/* breakpoint xl */
+@media(min-width: 1200px){
+    .container.bookmarked{
+        max-width: 1150px;
+    }
+    .div-content{
+        width: 260px;
+    }
+}
+/* breakpoint xxl */
+@media(min-width: 1400px){
+    .container.bookmarked{
+        max-width: 1280px;
+    }
+    .div-content{
+        width: 280px;
+    }
+}

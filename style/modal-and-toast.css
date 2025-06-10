@@ -1,0 +1,112 @@
+/* Modal Bootstrap Tweak */
+.color-box{
+    cursor: pointer;
+    pointer-events: auto;
+    margin-top: -11px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.form-control.custom-colored {
+  background-color: var(--user-color, skyblue) !important; /* fallback jika tidak ada */
+}
+
+.form-control.custom-colored:focus {
+  background-color: var(--user-color, skyblue) !important;
+}
+
+.form-select.custom {
+    cursor: pointer;
+}
+
+.form-control.custom-colored:-webkit-autofill {
+  box-shadow: 0 0 0 1000px var(--user-color, skyblue) inset !important;
+  -webkit-text-fill-color: #000 !important; /* biar teks tetap kelihatan */
+  transition: background-color 5000s ease-in-out 0s; /* kadang diperlukan */
+}
+.form-control.custom-colored:focus:-webkit-autofill {
+  box-shadow: 0 0 0 1000px var(--user-color, skyblue) inset !important;
+}
+input:-internal-autofill-selected {
+  background-color: var(--user-color, skyblue) !important;
+}
+
+/* Toast Bootstrap */
+
+.toast.custom:before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  height: 3px;
+  width: 98%;
+  background-color: coral;
+  animation: progress 3.1s linear forwards;
+}
+.toast-body.custom{
+  width: 100%;
+}
+.toast.custom.show{
+  position: fixed;
+  left: 5px; top: 20px;
+  border: 1px solid lightgreen;
+  background: linear-gradient(90deg, black,  #006994, black);
+  width: 250px;
+  transition: all .3s cubic-bezier(0.6, -0.28, 0.735, 0.045) !important;
+  animation: show_msg 0.5s ease forwards;
+}
+.toast.custom.hide {
+  position: fixed;
+  left: 0; top: 20px;
+  display: block !important;
+  border: 1px solid lightgreen;
+  background: linear-gradient(90deg, black,  #006994, black);
+  width: 250px;
+  transition: all .3s cubic-bezier(0.6, -0.28, 0.735, 0.045) !important;
+  animation: remove_show 0.3s ease forwards;
+}
+
+
+.tutup{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin-right: -10px;
+  margin-top: 5px;
+}
+@keyframes progress {
+  100%{
+    width: 0%
+  }
+}
+@keyframes show_msg{
+    0%{
+        transform: translateX(-100%);
+    }
+    40%{
+        transform: translateX(10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(5px);
+    }
+}
+@keyframes remove_show{
+    0%{
+        transform: translateX(5%);
+    }
+    40%{
+        transform: translateX(10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-300px);
+    }
+}

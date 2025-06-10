@@ -1,0 +1,48 @@
+@use "sass:map";
+
+$custom-theme-colors: (
+  "altlight": #f2ebfa,
+  "altdark": #522192,
+  "altblue": #006994,
+  "altlime": lime,
+  "altcoral": coral,
+);
+
+// 🟦 Override warna tema Bootstrap + custom warna kamu
+@use "../node_modules/bootstrap/scss/bootstrap" with (
+  $theme-colors: map.merge(
+    (
+      "primary": #38737a,
+      "secondary": #6c757d,
+      "success": #198754,
+      "info": #0dcaf0,
+      "warning": #ffc107,
+      "danger": #dc3545,
+      "light": #f8f9fa,
+      "dark": #212529
+    ),
+    (
+      "altlight": #f2ebfa,
+      "altdark": #522192,
+      "altblue": #006994,
+      "altlime": lime,
+      "altcoral": coral,
+    )
+  )
+);
+
+input.form-control:focus{
+  box-shadow: inset 2px 2px 4px black !important;
+  outline: none;
+  border-color: #f2ebfa;
+}
+.form-select:focus{
+  box-shadow: inset 2px 2px 4px black !important;
+  outline: none;
+  border-color: #f2ebfa;
+}
+
+// Baru setelah itu kita panggil bootstrap
+// @use "../node_modules/bootstrap/scss/bootstrap" with (
+//   $theme-colors: $theme-colors
+// );

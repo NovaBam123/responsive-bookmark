@@ -1,0 +1,14 @@
+{
+  "name": "bootstrap-bookmark",
+  "version": "1.0.0",
+  "description": "bookmark app bootstrap version",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NovaNov",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.6"
+  }
+}

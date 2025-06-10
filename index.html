@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOKMARKER II</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" 
+        rel="stylesheet"
+    >
+    <link 
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.css" integrity="sha384-..." crossorigin="anonymous"
+    />
+    <link 
+        rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/bar-search.css">
+    <link rel="stylesheet" href="style/modal-and-toast.css">
+    <link rel="stylesheet" href="style/content-bookmark.css">
+    <link rel="stylesheet" href="style/media.css">
+    
+    <!-- Script -->
+    <script src="js/main.js" defer></script>
+    <script src="js/render.js" defer></script>
+    <script src="js/colorHandler.js" defer></script>
+</head>
+<body>
+<!-- Navbar -->
+<header class="bg-primary position-relative">
+    <nav class="container-xxl custom-width navbar navbar-expand-md px-3 px-sm-5">
+        <div class="d-flex align-items-center justify-content-between w-100 text-light">
+
+            <!-- Kiri: Brand + Judul -->
+            <div class="d-flex align-items-center">
+                <a class="navbar-brand" href="#">
+                    <img src="assets/displayPic.jpg" alt="Logo"
+                        class="img-fluid rounded-circle custom border border-2 border-altcoral">
+                </a>
+                <div>
+                    <h1 class="h2 custom mb-0">Bookmarker II</h1>
+                    <h4 class="h4 custom">Mark your favorite website</h4>
+                </div>
+            </div>
+
+            <!-- Kanan: Hamburger -->
+            <button class="navbar-toggler border border-light" 
+                type="button" 
+                data-bs-toggle="collapse"
+                data-bs-target="#navmenu" 
+                >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navmenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2">
+                    <div class="d-flex justify-content-around gap-2 ms-auto">
+                        <div class="storage bg-altlight p-2 rounded mt-2 w-75">
+                            <div class="d-flex justify-content-around">
+                                <button class="btn storage btn-sm border border-light px-sm-2" id="exportBtn" title="Save data">
+                                    <i class="fa-solid fa-download rounded text-white fs-sm-5"></i>
+                                </button>
+                                <button class="btn storage btn-sm border border-light px-sm-2 text-light" id="importBtn" title="Upload data">
+                                    <i class="fa-solid fa-upload fs-sm-6"></i>
+                                </button>
+                                <button class="btn storage btn-sm border border-light px-sm-2 text-light" id="deleteBtn" title="Hapus localStorage!">
+                                    <i class="fa-solid fa-eraser fs-sm-6"></i>
+                                </button>
+                            </div>
+                            <input class="form-control form-control-sm mt-4" id="formFileSm" type="file">
+                        </div>
+
+                        <div class="color-picker bg-altlight rounded p-2 mt-2">
+                            <div class="d-flex gap-2">
+                                <div class="d-flex flex-column gap-1">
+                                    <input class="input-copy" type="color" value="#006994" id="colorChoose">
+                                    <button class="btn btn-sm btn-dark copyBtn text-light">Copy</button>
+                                </div>
+                                <button class="btn btn-dark apply-btn text-light">
+                                    <small class="fw-bold">Apply to Navbar</small>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>    
+        </div>
+    </nav>
+</header>
+
+<!-- bar-search -->
+<div class="bg-altlight py-1">
+    <div class="container-xxl bar-search">
+        <div class="row justify-content-around align-items-center g-4 g-xxl-5">
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control search-custom">
+                    <span class="input-group-text">
+                        <span>
+                            <i class="bi bi-search text-dark"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-1 bookmark-icon align-items-center">
+                <button 
+                    class="btn btn-sm btn-info px-2 m-0 p-0 tombol-submit" title="Add Site"
+                    data-bs-toggle="modal"
+                    data-bs-target="#url-submit"
+                    ">
+                    <i class="bi bi-journal-bookmark-fill fs-4 text-light"></i>
+                </button>
+            </div>
+            
+            <div class="col-4 col-md-4 col-lg-3 select-container">
+                <div class="custom-select-wrapper position-relative">
+                    <select class="form-select form-select-sm custom" id="filterBy">
+                        <option value="saveOrder">Save Order</option>
+                        <option value="byCreated">Sort ByCreated</option>
+                        <option value="byEdited">Sort ByEdited</option>
+                        <option value="byAlphabet">Sort Alphabetically</option>
+                    </select>
+                    <span class="custom-arrow">▼</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<!-- Modal -->
+<div class="modal fade" id="url-submit" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-altblue text-white" id="modal-title">
+                <h1 class="modal-title fs-5 ms-3" id="exampleModalLabel">
+                    Add New URL
+                </h1>
+                <button type="button" class="btn-close bg-light text-light" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <form method="post">
+                                <label for="name-site" class="form-label">Name</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-person-fill fs-5">
+                                        </i>
+                                    </span>
+                                    <input type="text" class="form-control" id="name-site">
+                                </div>
+                                <label for="url-adrress" class="form-label">URL</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="bi bi-globe-americas fs-5"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="url-address">
+                                    <input type="hidden" id="selected-color" name="selectedColor">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex-row">
+                <div class="container">
+                    <div class="row">
+
+                        <div id='color-select' class="d-flex color-select gap-2 mb-3 mt-0 ms-1">
+                            <div class='color-box' style="background-color: #dcdcdc;"></div>
+                            <div class='color-box' style="background-color: #ffff00;"></div>
+                            <div class='color-box' style="background-color: #00ff00;"></div>
+                            <div class='color-box' style="background-color: #79FDFE;"></div>
+                            <div class='color-box' style="background-color: #7AD6FD;"></div>
+                            <div class='color-box' style="background-color: #ffb6c1;"></div>
+                            <div class='color-box' style="background-color: #FF89FD;"></div>
+                            <div class='color-box' style="background-color: #ba55d3;"></div>
+                            <div class='color-box' style="background-color: #fa8072;"></div>
+                            <div class='color-box' style="background-color: #fc0fc0;"></div>
+                            <div class='color-box' style="background-color: #ff4500;"></div>
+                            <div class='color-box' style="background-color: #ff0000;"></div>
+                            <div class='color-box' style="background-color: #ae0c00;"></div>
+                            <div class='color-box' style="background-color: #8bbe1b;"></div>
+                            <div class='color-box' style="background-color: #228b22;"></div>
+                            <div class='color-box' style="background-color: #6495ed;"></div>
+                            <div class='color-box' style="background-color: #4682b4;"></div>
+                            <div class='color-box' style="background-color: #9400d3;"></div>
+                            <div class='color-box' style="background-color: #8a93c1;"></div>
+                            <div class='color-box' style="background-color: #e6b837;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    <button id="btn-submit" type="button" class="btn btn-altblue" data-bs-dismiss="modal">Submit</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Bookmark -->
+<div class="container my-4 px-md-2 bookmarked">
+    <div class="row justify-content-between px-2 px-lg-3 px-xl-4" id="bookmarked">
+    <!-- ...  -->
+    </div>
+</div>
+
+<!-- bsToast -->
+<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button> 
+<div class="container bs-toast">
+    <div class="toast-container custom top-0 pt-2 ps-4">
+        <div id="liveToast" class="toast custom text-light" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body d-flex align-items-center justify-content-between gap-2 border custom">
+                <div class="d-flex justify-content-between align-items-center">
+                    <i id="toast-icon" class="bi bi-exclamation-triangle-fill text-info fs-5 me-2"></i>
+                    <p class="fs-6 fw-semibold me-2 mb-0">Color Copied</p>
+                </div>
+                <button 
+                    type="button" 
+                    class="tutup bg-transparent border-0" 
+                    data-bs-dismiss="toast" 
+                    aria-label="Close"
+                    >
+                    <i class="bi bi-x fs-3 text-secondary mb-0 "></i>
+                </button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+<script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js">
+</script>
+<script>
+    const toastTrigger = document.getElementById('liveToastBtn')
+    const toastLiveExample = document.getElementById('liveToast')
+
+    if (toastTrigger) {
+        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample, {
+            autohide: true,
+            delay: 3000,
+            animation: false,
+        })
+        toastTrigger.addEventListener('click', () => {
+            toastBootstrap.show();
+        });
+    }
+</script>
+
+</body>
+</html>
