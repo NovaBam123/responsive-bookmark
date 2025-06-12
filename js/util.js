@@ -31,13 +31,6 @@ const handleEdit= (nameUrl, url, color)=> {
 }
 // Deleting
 const handleDelete= (id)=> {
-    // const myNewdata= {
-    //     id: 'id-007',
-    //     nama: 'Nova',
-    //     url: 'https://nov-codingnote.netlify.app/',
-    //     color: '#505658',
-    //     timeCreated: Date.now(),
-    // };
     let idForDelete= data.findIndex(val=> val.id=== id);
     let konfirmasi= confirm('Are you sure want delete this bookmark?')
     if(!konfirmasi) return;
@@ -49,6 +42,25 @@ const handleDelete= (id)=> {
         showToastBs(pickedColor, 'Data Berhasil dihapus.','bi bi-trash3 text-info fs-6 me-2');
     }
 }
+//get icon site
+const getFavicon = (url) => {
+  try {
+    const { origin } = new URL(url);
+    return `${origin}/favicon.ico`;
+  } catch {
+    return ''; // fallback
+  }
+};
+//filter bookmark
+const handleSearch= ()=> {
+   const keyword= searchInput.value.trim().toLowerCase();
+   const filtered= data.filter(item=> {
+        return item.nama.toLowerCase().includes(keyword) 
+   })
+   displayData(filtered);
+}
+searchInput.addEventListener('input', handleSearch);
+searchIcon.addEventListener('click', handleSearch);
 
 
 

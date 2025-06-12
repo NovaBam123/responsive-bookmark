@@ -19,8 +19,12 @@ toastIcon= document.getElementById('toast-icon'),
 // LocalStorage to lokal harddisk
 exportBtn= document.getElementById('export-btn'),
 importBtn= document.getElementById('import-btn'),
-deleteBtn= document.getElementById('delete-btn');
-fileInput= document.getElementById('file-input');
+deleteBtn= document.getElementById('delete-btn'),
+fileInput= document.getElementById('file-input'),
+
+// Search Bookmark
+searchIcon= document.getElementById('search-icon');
+searchInput= document.getElementById('search-input');
 
 // Modal
 let modalPopup= document.getElementById('bs-modal'),

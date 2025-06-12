@@ -27,7 +27,15 @@ const displayData= (newData)=> {
                     data-url= "${url}"
                 >
                 <div class="content">
-                    <p class="mb-0 bookmark-name ${textClass}">${nama}</p>
+                    <div class="d-flex name-icon align-items-center"> 
+                        <img 
+                            src="${getFavicon(url)}" 
+                            class="me-1 mt-1 rounded" 
+                            width="20" height="20"
+                            onerror="this.style.display='none';"
+                            />
+                        <p class="mb-0 bookmark-name ${textClass}">${nama}</p>
+                    </div>
                     <small class="fw-bold small-date ${textGray}">
                         ${createdAt}
                     </small>
