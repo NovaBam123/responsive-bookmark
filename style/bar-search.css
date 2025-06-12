@@ -13,18 +13,7 @@ header:before{
     bottom: 0;
     background: coral;
 }
-.btn.storage{
-    background: linear-gradient(120deg,black, #00b7eb, black 100%);
-    transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
-        &:hover{
-            transform: scale(0.92);
-            box-shadow: inset 2px 2px 4px black;
-        }
-        &:active{
-            background: white;
-            color: black;
-        }
-}
+
 .tombol-submit{
     background: linear-gradient(120deg,black, #00b7eb, black 100%);
     transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);

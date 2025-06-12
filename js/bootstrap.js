@@ -21,7 +21,7 @@ copyBtn.addEventListener('click', ()=> {
     navigator.clipboard.writeText(pickedColor)
     .then(()=> {
         applyBtn.dataset.color= pickedColor;
-        showToastBs(pickedColor, 'Copied color..!');
+        showToastBs(pickedColor, 'Copied color.');
         }).catch(err=> console.log('Failed to Copy', err));
 })
 
@@ -29,7 +29,7 @@ applyBtn.addEventListener('click', ()=> {
     const pickedColor= colorChoose.value;
     header.classList.remove('bg-primary');
     header.style.background= pickedColor;
-    showToastBs(pickedColor, 'Applying color to navbar!');
+    showToastBs(pickedColor, 'Applying color to navbar.');
 })
 
 const showToastBs= (picked, message, iconClass= 'bi bi-check-circle text-info fs-6 me-2')=> {

@@ -5,23 +5,24 @@
 }
 .small-date{
     font-size: 10px;
+    color: gray;
     margin-bottom: -10px !important;
+    font-weight: 700;
 }
 .div-content{
     box-shadow: inset 4px 4px 6px black;
     max-width: 300px;
 }
-.title-bookmark{
+.bookmark-name{
     font-size: 16px;
     font-weight: 500;
     margin-bottom: -5px !important;
 }
-.title-bookmark::first-letter{
+.bookmark-name::first-letter{
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 700;
 }
-
 .setting{
     position: relative;
     &.show .menu{

@@ -1,8 +1,13 @@
 // Manipulate DOM, update element
 const displayData= (newData)=> {
-    // console.log('Data diSimpan: ', data);
     bookmarkedContent.forEach(el=> el.remove());
-    const newEl= newData.map(({ id, nama, url, color })=> {
+    // bookmarkedUser.innerHTML= '';
+    const newEl= newData.map(({ id, nama, url, color, timeCreated})=> {
+        const hexColor = color.startsWith('rgb') ? rgbToHex(color): color;
+        const isLight = isLightColor(hexColor);
+        const textClass = isLight ? 'text-dark' : 'text-light';
+        const textGray= isLight ? 'text-secondary': 'text-light';
+        
         //Add Date dan Time
         const options = {
             year: 'numeric', month: 'long',
@@ -10,11 +15,8 @@ const displayData= (newData)=> {
             minute: 'numeric', second: 'numeric',
             hour12: true
         }
-        const createdAt= new Date().toLocaleString('en-US', options);
-        // // Add warna Text
-        // const textColor= isLightColor(color)? '#000 !important' : '#fff !important';
-
-
+        const createdAt= new Date(timeCreated).toLocaleString('en-US', options);
+        
         return `
             <div 
                 class="col-10 col-md-4 d-flex justify-content-between align-items-center rounded-pill url ps-4 py-2 div-content m-1" 
@@ -25,8 +27,8 @@ const displayData= (newData)=> {
                     data-url= "${url}"
                 >
                 <div class="content">
-                    <p class="mb-0 bookmark-name">${nama}</p>
-                    <small class="text-secondary fw-bold small-date">
+                    <p class="mb-0 bookmark-name ${textClass}">${nama}</p>
+                    <small class="fw-bold small-date ${textGray}">
                         ${createdAt}
                     </small>
                 </div>        
@@ -62,21 +64,6 @@ const displayData= (newData)=> {
     }).join('');
     bookmarkedUser.innerHTML = newEl;
 }    
-
-const isLightColor= (color)=> {
-    // Ubah ke format RGB dulu
-    const hex = color.replace('#', '');
-    const r = parseInt(hex.substr(0, 2), 16);
-    const g = parseInt(hex.substr(2, 2), 16);
-    const b = parseInt(hex.substr(4, 2), 16);
-
-    // Hitung brightness (rumus standard W3C)
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-    
-    // Kalo brightness > 128 berarti warna terang
-    return brightness > 128;
-}
-
 
 displayData(data);
 btnSubmit.addEventListener('click', ()=> getData());

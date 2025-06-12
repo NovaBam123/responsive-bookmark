@@ -19,18 +19,20 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Style -->
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/navbar.css">
     <link rel="stylesheet" href="style/bar-search.css">
     <link rel="stylesheet" href="style/modal-and-toast.css">
     <link rel="stylesheet" href="style/content-bookmark.css">
     <link rel="stylesheet" href="style/media.css">
     
     <!-- Script -->
-    <script src="js/main.js" defer></script>
-    <script src="js/render.js" defer></script>
-    <script src="js/bootstrap.js" defer></script>
-    <script src="js/colorHandler.js" defer></script>
+    <script src="js/selector.js" defer></script> 
+    <script src="js/main.js" defer></script> 
+    <script src="js/colorHandler.js" defer></script> 
     <script src="js/util.js" defer></script>
+    <script src="js/bootstrap.js" defer></script>
+    <script src="js/render.js" defer></script>
+    <script src="js/saveToHd.js" defer></script>
 </head>
 <body>
 <!-- Navbar -->
@@ -65,17 +67,17 @@
                     <div class="d-flex justify-content-around gap-2 ms-auto">
                         <div class="storage bg-altlight p-2 rounded mt-2 w-75">
                             <div class="d-flex justify-content-around">
-                                <button class="btn storage btn-sm border border-light px-sm-2" id="exportBtn" title="Save data">
+                                <button class="btn storage btn-sm border border-light px-sm-2" id="export-btn" title="Save data">
                                     <i class="fa-solid fa-download rounded text-white fs-sm-5"></i>
                                 </button>
-                                <button class="btn storage btn-sm border border-light px-sm-2 text-light" id="importBtn" title="Upload data">
+                                <button class="btn storage btn-sm border border-light px-sm-2 text-light" id="import-btn" title="Upload data">
                                     <i class="fa-solid fa-upload fs-sm-6"></i>
                                 </button>
-                                <button class="btn storage btn-sm border border-light px-sm-2 text-light" id="deleteBtn" title="Hapus localStorage!">
+                                <button class="btn storage btn-sm border border-light px-sm-2 text-light" id="delete-btn" title="Hapus localStorage!">
                                     <i class="fa-solid fa-eraser fs-sm-6"></i>
                                 </button>
                             </div>
-                            <input class="form-control form-control-sm mt-4" id="formFileSm" type="file">
+                            <input class="form-control form-control-sm mt-4" id="file-input" type="file">
                         </div>
 
                         <div class="color-picker bg-altlight rounded p-2 mt-2">
@@ -177,7 +179,6 @@
                     <div class="row">
 
                         <div id='color-select' class="d-flex color-select gap-2 mb-3 mt-0 ms-1">
-                            <div class='color-box' style="background-color: #dcdcdc;"></div>
                             <div class='color-box' style="background-color: #ffff00;"></div>
                             <div class='color-box' style="background-color: #00ff00;"></div>
                             <div class='color-box' style="background-color: #79FDFE;"></div>
@@ -197,12 +198,13 @@
                             <div class='color-box' style="background-color: #9400d3;"></div>
                             <div class='color-box' style="background-color: #8a93c1;"></div>
                             <div class='color-box' style="background-color: #e6b837;"></div>
+                            <div class='color-box' style="background-color: #78451c;"></div>
                         </div>
                     </div>
                 </div>
                 <div>
                     <button id="btn-cancel" type="submit" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
-                    <button id="btn-submit" type="button" class="btn btn-altblue" data-bs-dismiss="modal">Submit</button>
+                    <button id="btn-submit" type="submit" class="btn btn-altblue" data-bs-dismiss="modal">Submit</button>
                 </div>
 
             </div>
@@ -230,7 +232,7 @@
                     </div>
                     <button 
                         type="button" 
-                        class="tutup bg-transparent border-0" 
+                        class="close-button bg-transparent border-0" 
                         data-bs-dismiss="toast" 
                         aria-label="Close"
                         >

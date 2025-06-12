@@ -1,41 +1,10 @@
-const colorEl= document.querySelectorAll('.color-box'),
-bookmarkedUser= document.getElementById('bookmarked'),
-bookmarkedContent= document.querySelectorAll('.div-content'),
-settingToggle= document.querySelectorAll('.dropdown-toggle'),
-
-// Color-picker
-colorChoose= document.getElementById('color-choose'),
-copyBtn= document.getElementById('copy-btn'),
-applyBtn= document.getElementById('apply-btn'), 
-header= document.getElementById('header'),
-
-//Toast Bootstrap
-toastBs = document.getElementById('liveToast'),
-toastMessage= document.getElementById('toast-message'),
-toastProgress= document.getElementById('toast-progress'),
-toastIcon= document.getElementById('toast-icon'),
-
-//Util 
-settingBtn= document.getElementById('btn-setting');
-
-// Modal
-let modalPopup= document.getElementById('bs-modal'),
-modalTitle= document.getElementById('modal-title'),
-btnCancelSubmit= document.getElementById('btn-cancel'),
-btnSubmit= document.getElementById('btn-submit');
-
-let nameSite= document.getElementById('name-site');
-let urlSite= document.getElementById('url-address');
-let selectedColor= document.getElementById('selected-color');
 let activeId= null;
-let isUpdate= false; 
-
-
 let data= JSON.parse(localStorage.getItem('Bootstrap-bookmark')) || [];
+
 const getData= ()=> {
     let nameUrl= nameSite.value.trim();
     let dataUrl= urlSite.value.trim();
-    let colorUrl= selectedColor.value || 'fff';
+    let colorUrl= selectedColor.value || '#d3661d';
     let timeStamp= Date.now();
     const pickedColor= applyBtn.dataset.color || 'fff';
 
@@ -47,24 +16,25 @@ const getData= ()=> {
         showToastBs(pickedColor, 'Url tidak valid..!', 'bi bi-exclamation-triangle-fill text-danger fs-6 me-2')
     }else {
         const myData= {
-            id: `id-${timeStamp}`,
+            id: activeId || `id-${timeStamp}`,
             nama: nameUrl, 
             url: dataUrl, 
             color: colorUrl,
+            timeCreated: timeStamp,
         }
         if(activeId !== null){
-            const index= data.findIndex(val=> val.id=== activeId)
-            if(index< -1){
-                data.push(myData)
-            }else {
-                data[index]= myData
-                activeId= null;
+            const index= data.findIndex(val=> val.id=== activeId);
+            if(index> -1){
+                data[index]= myData;
+                activeId= null
             }
+        }else {
+            data.push(myData);
         }
         localStorage.setItem('Bootstrap-bookmark', JSON.stringify(data));
+        displayData(data);
+        resetModal();
     }
-    displayData(data);
-    resetModal();
 }
 
 // const urlModal = document.getElementById('url-submit');
