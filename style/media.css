@@ -12,6 +12,28 @@
         max-width: 30px;
         height: 30px; 
     }
+    .h2.custom{
+        font-size: 1.5rem
+    }
+    .h2.custom::before, .h2.custom:after{
+        top: 28px;
+    }
+    @keyframes clockwise{
+    0%, 100%{
+        transform: translate(0px); 
+    }
+    50%{
+        transform: translate(145px) scale(0.9); 
+    }
+}
+@keyframes counterClockwise {
+    0%, 100% {
+        transform: translateX(0); 
+    }
+    50% {
+        transform: translate(-145px) scale(0.9); 
+    }
+}
 }
 /* breakpoint sm */
 @media(min-width: 576px){
@@ -40,10 +62,10 @@
 /* breakpoint lg */
 @media(min-width: 992px){
     .container.bookmarked{
-        min-width: 880px;
+        min-width: 870px;
     }
     .div-content{
-        width: 220px;
+        width: 250px;
     }
 }
 /* breakpoint xl */
